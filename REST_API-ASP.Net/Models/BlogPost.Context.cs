@@ -15,10 +15,10 @@ namespace REST_API_ASP.Net.Models
     using System.Data.Entity.Infrastructure;
     using System.Xml.Serialization;
 
-    public partial class BlogPostDBContext : DbContext
+    public partial class BlogPostDBContex : DbContext
     {
-        public BlogPostDBContext()
-            : base("name=BlogPostDBContext")
+        public BlogPostDBContex()
+            : base("name=BlogPostDBContex")
         {
         }
     

@@ -7,7 +7,7 @@
     <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Comment" Type="text" Nullable="false" />
     <Property Name="PostId" Type="int" Nullable="false" />
-    <Property Name="UserId" Type="nchar" MaxLength="10" />
+    <Property Name="UserId" Type="int" />
   </EntityType>
   <EntityType Name="Posts">
     <Key>

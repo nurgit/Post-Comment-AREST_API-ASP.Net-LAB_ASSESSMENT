@@ -10,12 +10,13 @@ namespace REST_API_ASP.Net.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        protected BlogPostDBContext context = new BlogPostDBContext();
+        protected BlogPostDBContex context = new BlogPostDBContex();
         public void Delete(int id)
         {
             this.context.Set<T>().Remove(Get(id));
             this.context.SaveChanges();
         }
+
 
         public T Get(int id)
         {

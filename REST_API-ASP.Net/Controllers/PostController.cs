@@ -13,7 +13,7 @@ namespace REST_API_ASP.Net.Controllers
     [RoutePrefix("api/posts")]
     public class PostController : ApiController
     {
-        ComentRepository postRepository = new ComentRepository();
+        PostRepository postRepository = new PostRepository();
         [Route("")]
         public IHttpActionResult Get()
         {

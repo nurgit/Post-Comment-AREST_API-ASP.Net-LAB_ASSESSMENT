@@ -7,8 +7,8 @@
     <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PostId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
     <NavigationProperty Name="Post" Relationship="Self.FK_Comments_Posts" FromRole="Comments" ToRole="Posts" />
-    <Property Name="UserId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="Post">
     <Key>
@@ -16,8 +16,16 @@
     </Key>
     <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Post1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Comment" Relationship="Self.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
     <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Comment" Relationship="Self.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <Association Name="FK_Comments_Posts">
     <End Role="Posts" Type="Self.Post" Multiplicity="1" />
@@ -31,21 +39,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BlogPostDBContext" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="BlogPostDBContex" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Comments" EntityType="Self.Comment" />
     <EntitySet Name="Posts" EntityType="Self.Post" />
+    <EntitySet Name="Users" EntityType="Self.User" />
     <AssociationSet Name="FK_Comments_Posts" Association="Self.FK_Comments_Posts">
       <End Role="Posts" EntitySet="Posts" />
       <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
-    <EntitySet Name="Users" EntityType="BlogPostDBModel.User" />
   </EntityContainer>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
 </Schema>

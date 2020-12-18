@@ -7,7 +7,7 @@ using System.Web;
 
 namespace REST_API_ASP.Net.Repository
 {
-    public class ComentRepository:Repository<Post>
+    public class PostRepository:Repository<Post>
     {
      
     }
