@@ -9,10 +9,12 @@
 
 namespace REST_API_ASP.Net.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Xml.Serialization;
+
     public partial class BlogPostDBContext : DbContext
     {
         public BlogPostDBContext()
@@ -24,7 +26,7 @@ namespace REST_API_ASP.Net.Models
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+    [JsonIgnore,XmlIgnore]
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
     }
