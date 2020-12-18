@@ -9,15 +9,18 @@
 
 namespace REST_API_ASP.Net.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.Xml.Serialization;
+
     public partial class Comment
     {
         public int CommentId { get; set; }
         public string Comment1 { get; set; }
         public int PostId { get; set; }
-    
+
+        [JsonIgnore, XmlIgnore]
         public virtual Post Post { get; set; }
     }
 }

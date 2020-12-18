@@ -26,8 +26,9 @@ namespace REST_API_ASP.Net.Models
         {
             throw new UnintentionalCodeFirstException();
         }
-    [JsonIgnore,XmlIgnore]
+        [JsonIgnore,XmlIgnore]
         public virtual DbSet<Comment> Comments { get; set; }
+        [JsonIgnore, XmlIgnore]
         public virtual DbSet<Post> Posts { get; set; }
     }
 }
