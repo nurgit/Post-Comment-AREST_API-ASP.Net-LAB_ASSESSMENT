@@ -11,6 +11,7 @@ using System.Web.Http;
 namespace REST_API_ASP.Net.Controllers
 {
     [RoutePrefix("api/posts")]
+
     public class PostController : ApiController
     {
         PostRepository postRepository = new PostRepository();
@@ -19,9 +20,8 @@ namespace REST_API_ASP.Net.Controllers
         {
             return Ok(postRepository.GetAll());
         }
-
-        [Route("{id}", Name ="GetPostById")]//nothing...just giving a name to this route for next time use
-        public IHttpActionResult Get(int id)
+        [Route("{id}")]
+         public IHttpActionResult Get(int id)
         {
             var post = postRepository.Get(id);
             if (post == null)
@@ -32,15 +32,15 @@ namespace REST_API_ASP.Net.Controllers
         }
 
         [Route("")]
-        public IHttpActionResult Post(Post post)
-        {
-            string uri = Url.Link("GetPostById", new { id=post.PostId});
+       public IHttpActionResult Post(Post post)
+        { 
+ 
             postRepository.Insert(post);
-            return Created(uri, post);
+            return Created("api/posts/"+ post.PostId, post);
         }
 
-        [Route("")]
-        public IHttpActionResult Put([FromUri] int id,[FromBody]Post post)
+        [Route("{id}")]
+        public IHttpActionResult Put([FromUri] int id, [FromBody] Post post)
         {
             post.PostId = id;
             postRepository.Update(post);
@@ -57,7 +57,7 @@ namespace REST_API_ASP.Net.Controllers
 
 
         //----GetCommentsByPost
-    
+
         [Route("api/posts/{id}/comments")]
 
         public IHttpActionResult GetCommentsByPostId(int id)

@@ -34,15 +34,15 @@ namespace REST_API_ASP.Net.Controllers
         [Route("")]
         public IHttpActionResult Post(Comment comment)
         {
-            string uri = Url.Link("GetCommenttById", new { id = comment.CommentId });
+
             commentRepository.Insert(comment);
-            return Created(uri, comment);
+            return Created("api/posts/" + comment.CommentId, comment);
         }
 
-        [Route("")]
+        [Route("{id}")]
         public IHttpActionResult Put([FromUri] int id, [FromBody] Comment comment)
         {
-            comment.CommentId = id;
+            comment.PostId = id;
             commentRepository.Update(comment);
             return Ok(comment);
         }
