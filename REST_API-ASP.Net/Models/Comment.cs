@@ -20,7 +20,7 @@ namespace REST_API_ASP.Net.Models
         public string Comment1 { get; set; }
         public int PostId { get; set; }
         public string UserId { get; set; }
-        [JsonIgnore, XmlIgnore]
+        [XmlIgnore]
         public virtual Post Post { get; set; }
     }
 }
