@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="BlogPostDBModel.Comment" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BlogPostDBModel.Post" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="BlogPostDBModel.FK_Comments_Posts" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BlogPostDBModel.User" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

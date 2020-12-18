@@ -8,6 +8,7 @@
     <Property Name="Comment1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PostId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Post" Relationship="Self.FK_Comments_Posts" FromRole="Comments" ToRole="Posts" />
+    <Property Name="UserId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="Post">
     <Key>
@@ -16,6 +17,7 @@
     <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Post1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Comment" Relationship="Self.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
+    <Property Name="UserId" Type="Int32" />
   </EntityType>
   <Association Name="FK_Comments_Posts">
     <End Role="Posts" Type="Self.Post" Multiplicity="1" />
@@ -36,5 +38,14 @@
       <End Role="Posts" EntitySet="Posts" />
       <End Role="Comments" EntitySet="Comments" />
     </AssociationSet>
+    <EntitySet Name="Users" EntityType="BlogPostDBModel.User" />
   </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

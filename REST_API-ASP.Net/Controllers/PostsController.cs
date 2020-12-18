@@ -1,4 +1,5 @@
-﻿using REST_API_ASP.Net.Repository;
+﻿using REST_API_ASP.Net.Models;
+using REST_API_ASP.Net.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,13 @@ namespace REST_API_ASP.Net.Controllers
                 return StatusCode(HttpStatusCode.NoContent);
             }
             return Ok(postRepository.Get(id));
+        }
+
+        public IHttpActionResult Post(Post post)
+        {
+
+            postRepository.Insert(post);
+            return Created("api/posts/"+post.PostId,post);
         }
     }
 }

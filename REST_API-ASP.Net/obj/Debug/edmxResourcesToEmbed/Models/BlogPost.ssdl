@@ -7,6 +7,7 @@
     <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Comment" Type="text" Nullable="false" />
     <Property Name="PostId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Posts">
     <Key>
@@ -14,6 +15,15 @@
     </Key>
     <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Post" Type="text" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <Association Name="FK_Comments_Posts">
     <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
@@ -30,6 +40,7 @@
   <EntityContainer Name="BlogPostDBModelStoreContainer">
     <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Comments_Posts" Association="Self.FK_Comments_Posts">
       <End Role="Posts" EntitySet="Posts" />
       <End Role="Comments" EntitySet="Comments" />
