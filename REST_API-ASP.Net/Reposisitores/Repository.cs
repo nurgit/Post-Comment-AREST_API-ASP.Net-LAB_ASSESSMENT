@@ -27,6 +27,12 @@ namespace REST_API_ASP.Net.Repositories
         {
             return this.context.Set<T>().ToList();
         }
+        //---get by id
+        public T GetById(int id)
+        {
+            return context.Set<T>().Find(id);
+        }
+
 
         public void Insert(T entity)
         {

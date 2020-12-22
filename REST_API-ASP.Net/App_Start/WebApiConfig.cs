@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace REST_API_ASP.Net
 {
@@ -19,6 +20,17 @@ namespace REST_API_ASP.Net
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            //config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+            // //config.Formatters.Remove(config.Formatters.XmlFormatter);
+            //// config.Formatters.Remove(config.Formatters.JsonFormatter);
+            // EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            // config.EnableCors(cors);
+
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver();
+            //config.Formatters.Remove(config.Formatters.XmlFormatter);
+            EnableCorsAttribute cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
+
         }
     }
 }

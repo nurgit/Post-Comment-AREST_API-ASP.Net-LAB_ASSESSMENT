@@ -58,12 +58,12 @@ namespace REST_API_ASP.Net.Controllers
 
         //----GetCommentsByPost
 
-        [Route("api/posts/{id}/comments")]
+        //[Route("{id}/comments")]
 
-        public IHttpActionResult GetCommentsByPostId(int id)
-        {
-            CommentRepository commentRepository = new CommentRepository();
-            return Ok(commentRepository.GetCommentsByPost(id));
-        }
+        //public IHttpActionResult GetCommentsByPostId(int id)
+        //{
+        //    CommentRepository commentRepository = new CommentRepository();
+        //    return Ok(commentRepository.GetCommentsByPost(id));
+        //}
     }
 }

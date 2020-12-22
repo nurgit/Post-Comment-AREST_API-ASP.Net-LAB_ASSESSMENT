@@ -10,6 +10,7 @@ namespace REST_API_ASP.Net.Repositories
     {
         List<T> GetAll();
         T Get(int id);
+        T GetById(int id);
         void Insert(T entity);
         void Update(T entity);
         void Delete(int id);

@@ -13,13 +13,23 @@ namespace REST_API_ASP.Net.Models
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
-
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public partial class Post
     {
+        //public Post()
+        //{
+        //    this.Comment = new HashSet<Comment>();
+        //}
+
         public int PostId { get; set; }
         public string Post1 { get; set; }
         public Nullable<int> UserId { get; set; }
-    [JsonIgnore,XmlIgnore]
-        public virtual Comment Comment { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [XmlIgnore,JsonIgnore]
+        //public virtual Comment Comment { get; set; }
+
+        public  ICollection<Comment> Comment { get; set; }
+        //public  Comment Comment { get; set; }
     }
 }

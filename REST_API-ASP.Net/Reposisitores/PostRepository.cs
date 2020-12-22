@@ -9,6 +9,10 @@ namespace REST_API_ASP.Net.Repository
 {
     public class PostRepository:Repository<Post>
     {
-     
+        public List<Comment> GetCommentsByPost(int id)
+        {
+            return this.context.Comments.Where(x => x.PostId == id).ToList();
+        }
+
     }
 }
