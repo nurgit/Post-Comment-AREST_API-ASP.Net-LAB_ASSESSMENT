@@ -11,7 +11,7 @@ using System.Web.Http;
 namespace REST_API_ASP.Net.Controllers
 {
     //[RoutePrefix("api/coments")]
-    [RoutePrefix("api/Posts/{id}/Comments")]
+    [RoutePrefix("api/posts/{id}/comments")]
     public class CommentController : ApiController
     {
          CommentRepository commentRepository = new CommentRepository();
